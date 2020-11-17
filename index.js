@@ -26,7 +26,10 @@ client.connect(err => {
     app.post("/addService", (req, res) => {
         const file = req.files.file;
         const name = req.body.name;
-        const desc = req.body.desc;
+        const bed = req.body.bed;
+        const bath = req.body.bath;
+        const price = req.body.price;
+        const location = req.body.location;
         const newImg = file.data;
         const encImg = newImg.toString('base64');
 
@@ -36,7 +39,7 @@ client.connect(err => {
             img: Buffer.from(encImg, 'base64')
         };
 
-        servicesCollection.insertOne({ name, desc, image })
+        servicesCollection.insertOne({ name, bed, bath, price, location, image })
             .then(result => {
                 res.send(result.insertedCount > 0);
             })
