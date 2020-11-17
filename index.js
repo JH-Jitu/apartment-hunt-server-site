@@ -64,22 +64,14 @@ client.connect(err => {
 
     // Adding Order
     app.post("/addOrder", (req, res) => {
-        const file = req.files.file;
         const name = req.body.name;
         const desc = req.body.desc;
         const email = req.body.email;
         const service = req.body.service;
         const price = req.body.price;
-        const newImg = file.data;
-        const encImg = newImg.toString('base64');
 
-        var image = {
-            contentType: file.mimetype,
-            size: file.size,
-            img: Buffer.from(encImg, 'base64')
-        };
 
-        userServicesCollection.insertOne({ name, desc, email, service, price, image })
+        userServicesCollection.insertOne({ name, desc, email, service, price })
             .then(result => {
                 res.send(result.insertedCount > 0);
             })
