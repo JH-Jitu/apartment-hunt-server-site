@@ -17,11 +17,10 @@ app.use(express.static('services'));
 app.use(fileUpload());
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
-    const servicesCollection = client.db("assignment11").collection("services");
-    const userServicesCollection = client.db("assignment11").collection("userServices");
-    const reviewCollection = client.db("assignment11").collection("review");
-    const adminCollection = client.db("assignment11").collection("admin");
-    const statusCollection = client.db("assignment11").collection("status");
+    const servicesCollection = client.db("apartment").collection("services");
+    const userServicesCollection = client.db("apartment").collection("userServices");
+    const reviewCollection = client.db("apartment").collection("review");
+    const adminCollection = client.db("apartment").collection("admin");
 
     // Uploading Services
     app.post("/addService", (req, res) => {
