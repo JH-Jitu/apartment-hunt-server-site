@@ -53,6 +53,15 @@ client.connect(err => {
             })
     })
 
+    // Details
+    app.get('/services/:_id', (req, res) => {
+        servicesCollection
+          .find({ _id: ObjectId(req.params._id) })
+          .toArray((err, documents) => {
+            res.send(documents[0]);
+          });
+      });
+
     // Adding Admin via email
     app.post("/addAdmin", (req, res) => {
         const email = req.body.email;
