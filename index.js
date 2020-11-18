@@ -54,7 +54,7 @@ client.connect(err => {
     })
 
     // Details
-    app.get('/services/:_id', (req, res) => {
+    app.get('/book/:_id', (req, res) => {
         servicesCollection
           .find({ _id: ObjectId(req.params._id) })
           .toArray((err, documents) => {
